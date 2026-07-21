@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Chrome Extension</p>
+        <h1>Job Tracker</h1>
+      </div>
+
+      <button id="extractJobButton" class="button button-secondary" type="button">
+        Get Current Job
+      </button>
+    </header>
+
+    <section class="stats-grid" aria-label="Application statistics">
+      <article class="stat-card">
+        <span id="totalCount" class="stat-value">0</span>
+        <span class="stat-label">Total</span>
+      </article>
+
+      <article class="stat-card">
+        <span id="appliedCount" class="stat-value">0</span>
+        <span class="stat-label">Applied</span>
+      </article>
+
+      <article class="stat-card">
+        <span id="interviewCount" class="stat-value">0</span>
+        <span class="stat-label">Interviews</span>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">New application</p>
+          <h2>Add a job</h2>
+        </div>
+      </div>
+
+      <form id="jobForm" class="job-form">
+        <input id="jobId" type="hidden" />
+
+        <label>
+          <span>Job title</span>
+          <input id="jobTitle" name="jobTitle" type="text" placeholder="Frontend Developer" required />
+        </label>
+
+        <label>
+          <span>Company</span>
+          <input id="companyName" name="companyName" type="text" placeholder="Example Company" required />
+        </label>
+
+        <label>
+          <span>Job URL</span>
+          <input id="jobUrl" name="jobUrl" type="url" placeholder="https://..." />
+        </label>
+
+        <div class="form-row">
+          <label>
+            <span>Status</span>
+            <select id="jobStatus" name="jobStatus">
+              <option value="saved">Saved</option>
+              <option value="applied">Applied</option>
+              <option value="interview">Interview</option>
+              <option value="rejected">Rejected</option>
+              <option value="offer">Offer</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Date</span>
+            <input id="applicationDate" name="applicationDate" type="date" />
+          </label>
+        </div>
+
+        <label>
+          <span>Notes</span>
+          <textarea id="jobNotes" name="jobNotes" rows="4" placeholder="Contact person, salary, follow-up date..."></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button id="saveJobButton" class="button button-primary" type="submit">
+            Save Job
+          </button>
+
+          <button id="cancelEditButton" class="button button-ghost hidden" type="button">
+            Cancel Edit
+          </button>
+        </div>
+
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Your applications</p>
+          <h2>Saved jobs</h2>
+        </div>
+
+        <button id="exportButton" class="button button-ghost" type="button">
+          Export CSV
+        </button>
+      </div>
+
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search company or job title" />
+
+        <select id="statusFilter" aria-label="Filter jobs by status">
+          <option value="all">All statuses</option>
+          <option value="saved">Saved</option>
+          <option value="applied">Applied</option>
+          <option value="interview">Interview</option>
+          <option value="rejected">Rejected</option>
+          <option value="offer">Offer</option>
+        </select>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <h3>No jobs saved yet</h3>
+        <p>Add your first job application using the form above.</p>
+      </div>
+
+      <div id="jobsList" class="jobs-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../scripts/sidepanel.js"></script>
+</body>
+</html>
