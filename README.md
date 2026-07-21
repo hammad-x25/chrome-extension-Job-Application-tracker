@@ -15,7 +15,7 @@ A JavaScript-based Chrome extension that helps users extract, save, organize, se
 - Prevent duplicate job URLs
 - Export saved applications as a CSV file
 - Open job links directly from the extension
-- Use a Chrome side panel interface
+- Use a Chrome side panel interface 
 
 ## Supported Job Data
 
